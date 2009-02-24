@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PROJECT=aspnetcheck
+PROJECT=mono-check
 FILE=
 CONFIGURE=configure.ac
 

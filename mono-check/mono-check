@@ -3,7 +3,7 @@
 #
 # Those two are read-only
 #
-NAME="aspnetcheck"
+NAME="mono-check"
 VERSION="0.0.1"
 
 #
@@ -18,12 +18,12 @@ OS_ARCH=""
 # Directory to be used for temporary files, made read-only after assignment.
 # The entire directory is recursively removed on exit
 #
-TEMP_DIR=`/bin/mktemp -d /tmp/aspnetcheck.XXXXXXXXXX`
+TEMP_DIR=`/bin/mktemp -d /tmp/mono-check.XXXXXXXXXX`
 
 #
 # All of them are loaded, if found, in the order given
 #
-CONFIG_LOCATIONS="/usr/local/etc/aspnetcheck.conf /etc/aspnetcheck.conf /etc/sysconfig/aspnetcheck.conf /opt/etc/aspnetcheck.conf /opt/etc/sysconfig/aspnetcheck.conf"
+CONFIG_LOCATIONS="/usr/local/etc/mono-check.conf /etc/mono-check.conf /etc/sysconfig/mono-check.conf /opt/etc/mono-check.conf /opt/etc/sysconfig/mono-check.conf"
 
 #
 # Do not change these two values here, they are defaults.
@@ -32,7 +32,7 @@ CONFIG_LOCATIONS="/usr/local/etc/aspnetcheck.conf /etc/aspnetcheck.conf /etc/sys
 COPYRIGHT="Copyright (c) 2009 Novell, Inc"
 BUGMAIL="mhabersack@novell.com"
 
-LOG_LOCATION="/var/log/mono/aspnetcheck.log"
+LOG_LOCATION="/var/log/mono/mono-check.log"
 RECOMMENDED_MPM="worker"
 MIN_MONO_VERSION=2.0.1
 
@@ -47,14 +47,14 @@ CUR_MONO_VERSION=2.2
 # THIS SHOULD BE COMMENTED OUT IN PRODUCTION
 #
 #if [ -n "$SKU_DEBUG" ]; then
-#    CONFIG_LOCATIONS="./aspnetcheck.conf $CONFIG_LOCATIONS"
+#    CONFIG_LOCATIONS="./mono-check.conf $CONFIG_LOCATIONS"
 #    LOG_LOCATION="./checks.log"
 #fi
 
 #
 # Defaults
 #
-SCRIPTS_DIR=/usr/share/mono-aspnetcheck/scripts
+SCRIPTS_DIR=/usr/share/mono-check/scripts
 
 #
 # Do not modify those variables

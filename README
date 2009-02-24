@@ -1,4 +1,4 @@
-aspnetcheck
+mono-check
 ===========
 
    This is a simple utility to check the correctness of Mono installation and its 
@@ -8,7 +8,7 @@ relatively easy to extend to support various Linux distributions. Currently the 
 supported distribution is the SuSE Linux family of operating systems.
    To add checks you need to create a file with the .check extension and put it in the
 scripts/checks/generic (for all operating systems), scripts/checks/suse (for suse) or
-scripts/checks/os_name (where os_name is known to the aspnetcheck script, see the
+scripts/checks/os_name (where os_name is known to the mono-check script, see the
 determine_os function in that script). All .check files in those directories that have
 the exec bit set will be sourced by the driver script and all the functions named
 check_* will be included in the run. Before running, the check_* functions are sorted 
@@ -43,11 +43,11 @@ The directory hierarchy is sought for .check and .sh files in the following orde
 upper level directories (unless the functions are marked readonly in the files loaded prior 
 to the one attempting to override them).
 
-   To test the scripts create an aspnetcheck.conf file in the same directory in which
-the main (aspnetcheck) script lives and put the following line inside:
+   To test the scripts create an mono-check.conf file in the same directory in which
+the main (mono-check) script lives and put the following line inside:
 
 SCRIPTS_DIR=./scripts
 
-   Then export the SKU_DEBUG=1 environment variable and run ./aspnetcheck
+   Then export the SKU_DEBUG=1 environment variable and run ./mono-check
 
 TODO: more documentation

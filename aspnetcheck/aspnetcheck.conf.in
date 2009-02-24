@@ -1,2 +1,0 @@
-SCRIPTS_DIR=@prefix@/@scripts_dir@
-LOG_LOCATION=/var/log/mono/aspnetcheck.log

@@ -1,3 +1,3 @@
-man1_MANS = aspnetcheck.1
+man1_MANS = mono-check.1
 
 EXTRA_DIST = $(man1_MANS)
