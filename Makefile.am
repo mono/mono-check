@@ -1,1 +1,1 @@
-SUBDIRS = aspnetcheck man
+SUBDIRS = mono-check man
