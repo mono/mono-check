@@ -1,0 +1,10 @@
+2009-02-07  Marek Habersack  <mhabersack@novell.com>
+
+	* aspnetcheck: changed some defaults and commented out debugging
+	code.
+	(CONFIG_LOCATIONS): added /usr/local/etc/aspnetcheck.conf
+
+2009-01-10  Marek Habersack  <mhabersack@novell.com>
+
+	* Initial import
+

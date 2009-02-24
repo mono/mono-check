@@ -1,0 +1,9 @@
+2009-02-07  Marek Habersack  <mhabersack@novell.com>
+
+	* man/Makefile.am: added
+
+	* configure.ac: added man/Makefile to AC_OUTPUT
+
+	* man/aspnetcheck.1: added
+
+

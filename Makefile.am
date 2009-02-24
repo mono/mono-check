@@ -1,0 +1,1 @@
+SUBDIRS = aspnetcheck man

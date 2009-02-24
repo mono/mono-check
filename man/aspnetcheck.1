@@ -1,0 +1,83 @@
+.\" Copyright (c) 2009 Novell, Inc
+.\" 
+.\" 
+.TH "aspnetcheck" "1" "February 6, 2009" "http://mono-project.com/" "Mono ASP.NET check script"
+.SH "NAME"
+aspnetcheck \- validate mod_mono/ASP.NET installation
+
+.SH "SYNOPSIS"
+.B aspnetcheck
+.RI 
+.br 
+
+.SH "DESCRIPTION"
+aspnetcheck performs a series of tests on the system to make sure that mod_mono installation is correct and suitable for hosting \fBASP.NET\fR applications.
+.br 
+The tests are implemented as small scripts which execute independently of each other and report problems encountered with the installation. It is possible to easily extend the set of tests by creating your own scripts \- for details please read the \fBREADME\fR file in the source distribution of aspnetcheck or in the location where your Linux distribution places package documentation (e.g. /usr/share/doc/packages/aspnetcheck or /usr/share/doc/aspnetcheck).
+.br 
+\fBaspnetcheck\fR accepts no parameters and it should be executed as root.
+.br 
+See the \fBCHECKS\fR section below for description of individual tests.
+
+
+.SH "TESTS"
+aspnetcheck supports tests for specific Linux distributions or generic ones, which work on every distribution. Each test described below is accompanied by the distribution name, and possibly its version, to which it applies. A bash function name implementing the test is omitted as it is not relevant for the end user, only a descriptive name for the test is given.
+.br 
+.IP 
+.TP 
+\fI[SuSE] \fR\fBApache version 2 installation check.\fR
+.IP 
+Checks whether the apache2 RPM is installed.
+.TP 
+\fI[SuSE] \fR\fBApache version 2 MPM check.\fR
+.IP 
+Checks which MPM (Multi\-Processing Module) is installed. Apache v2 features several MPMs, each of which implements a different process/server model. aspnetcheck checks which module is installed and recommends one of the modules should one that is not recommended is in use.
+.TP 
+\fI[SuSE] \fR\fBApache configuration check.\fR
+.IP 
+Finds Apache configuration and checks its syntax.
+.TP 
+\fI[SuSE] \fR\fBWhether mod_mono loaded check.\fR
+.IP 
+Checks whether the mod_mono module is loaded on Apache startup. A test is made to detect whether the module is found in Apache configuration, no verification whether it actually loads is performed.
+.TP 
+\fI[SuSE] \fR\fBWhether mod_mono is loadable.\fR
+.IP 
+Looks for mod_mono configuration, makes sure that the mod_mono.so file is found where it is expected by Apache configuration, checks if the module has all its shared library dependencies satisfied and checks whether it is appropriate for the current architecture.
+.TP 
+\fI[SuSE] \fR\fBWhether Mono is installed.\fR
+.IP 
+Tests whether all the RPM packages required by mod_mono are installed.
+.TP 
+\fI[SuSE] \fR\fBMono version check.\fR
+.IP 
+Looks at which Mono version is installed and whether it is equal to or newer than the currently recommended version. It also informs the user if a newer version of Mono is available.
+.TP 
+\fI[SuSE] \fR\fBMono virtual hosts checks.\fR
+.IP 
+Performs sanity checks on all of the available Mono virtual hosts. The virtual host configuration files are expected to be found in the standard SuSE location, \fBAPACHE2_CONFIG_DIR\fR/vhosts.d/. The value of \fBAPACHE2_CONFIG_DIR\fR is determined with the help of the \fBapache2ctl\fR program.
+.SH "CONFIGURATION"
+aspnetcheck can be configured via a configuration file sought for in several locations, in the order given below:
+.IP 
+\fI/usr/local/etc/aspnetcheck.conf\fR
+.IP 
+\fI/etc/aspnetcheck.conf\fR
+.IP 
+\fI/etc/sysconfig/aspnetcheck.conf\fR
+.IP 
+\fI/opt/etc/aspnetcheck.conf\fR
+.IP 
+\fI/opt/etc/sysconfig/aspnetcheck.conf\fR
+.PP 
+The following is a list of variables which can be set in any of those files:
+.TP 
+\fBSCRIPTS_DIR\fR \- directory where the check and system scripts are kept.
+.TP 
+\fBLOG_LOCATION\fR \- path to the log file which contains additional information should any of the tests fail.
+.TP 
+\fBRECOMMENDED_MPM\fR \- name of the recommended Apache v2 MPM
+.TP 
+\fBMIN_MONO_VERSION\fR \- minimum Mono version required.
+
+.SH "EXIT STATUS"
+On success the script returns \fB0\fR, on failure \fB1\fR is returned.
