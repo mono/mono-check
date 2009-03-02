@@ -1,10 +1,11 @@
 #!/bin/bash
 
 #
-# Those two are read-only
+# Those three are read-only
 #
 NAME="mono-check"
-VERSION="0.0.1"
+VERSION="0.0.2"
+prefix=@prefix@
 
 #
 # No defaults for those. They are set and made read-only in detect_os below
@@ -23,7 +24,7 @@ TEMP_DIR=`/bin/mktemp -d /tmp/mono-check.XXXXXXXXXX`
 #
 # All of them are loaded, if found, in the order given
 #
-CONFIG_LOCATIONS="/usr/local/etc/mono-check.conf /etc/mono-check.conf /etc/sysconfig/mono-check.conf /opt/etc/mono-check.conf /opt/etc/sysconfig/mono-check.conf"
+CONFIG_LOCATIONS="@sysconfdir@/mono-check.conf /usr/local/etc/mono-check.conf /etc/mono-check.conf /etc/sysconfig/mono-check.conf /opt/etc/mono-check.conf /opt/etc/sysconfig/mono-check.conf"
 
 #
 # Do not change these two values here, they are defaults.
@@ -275,7 +276,7 @@ function determine_os ()
 
 trap on_signal 1 2 3 4 9 15
 trap on_exit 0
-readonly NAME VERSION TEMP_DIR
+readonly NAME VERSION TEMP_DIR prefix
 readonly -f load_configs load_scripts determine_os __os_set_vendor __os_set_release __os_set_name __os_set_arch load_os_scripts \
     __load_os_scripts_from __remove_temp_directory
 

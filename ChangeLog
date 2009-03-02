@@ -1,3 +1,8 @@
+2009-03-02  Marek Habersack  <mhabersack@novell.com>
+
+	* configure.ac: mono-check/mono-check is generated on configure
+	time now.
+
 2009-02-07  Marek Habersack  <mhabersack@novell.com>
 
 	* man/Makefile.am: added

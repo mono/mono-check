@@ -1,3 +1,10 @@
+2009-03-02  Marek Habersack  <mhabersack@novell.com>
+
+	* mono-check.in: renamed from mono-chek.
+	Added support for looking for the script configuration files in
+	the configured $prefix directory.
+	Bumped the revision.
+
 2009-02-07  Marek Habersack  <mhabersack@novell.com>
 
 	* aspnetcheck: changed some defaults and commented out debugging
