@@ -202,6 +202,7 @@ function __os_set_name ()
 {
     case `echo $1 | tr A-Z a-z` in
 	opensuse) OS_NAME="opensuse" ;;
+	"suse linux enterprise"*) OS_NAME="sles" ;;
 	*) die "Unable to determine the OS name or the OS name is unknown to the script" ;;
     esac
     readonly OS_NAME
@@ -212,6 +213,7 @@ function __os_set_arch ()
     case $1 in
 	x86_64) OS_ARCH=64 ;;
 	i?86) OS_ARCH=32 ;;
+	s390x) OS_ARCH=64 ;;
 	*) die "Unable to determine the OS architecture or the architecture is unknown to the script" ;;
     esac
     readonly OS_ARCH
@@ -247,6 +249,15 @@ function determine_os ()
 	    __os_set_release "$tmp"
 
 	    tmp=`head -1 /etc/SuSE-brand`
+	    __os_set_name "$tmp"
+	elif [ -f /etc/SuSE-release ]; then
+	    OS_VENDOR="suse"
+	    readonly OS_VENDOR
+
+	    tmp=`grep ^VERSION /etc/SuSE-release|cut -d ' ' -f 3`.`grep ^PATCHLEVEL /etc/SuSE-release|cut -d ' ' -f 3`
+	    __os_set_release "$tmp"
+
+	    tmp=`head -1 /etc/SuSE-release`
 	    __os_set_name "$tmp"
 	fi
     fi

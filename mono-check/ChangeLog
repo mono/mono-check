@@ -1,3 +1,10 @@
+2009-03-04  Marek Habersack  <mhabersack@novell.com>
+
+	* mono-check.in: added support for detecting SuSE OS-es which have
+	/etc/SuSE-release and don't have /etc/SuSE-brand or
+	lsb_release. Also added support for the s390x architecture and
+	SLES.
+
 2009-03-02  Marek Habersack  <mhabersack@novell.com>
 
 	* mono-check.in: renamed from mono-chek.
